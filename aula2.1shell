@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#Aluno: Jefferson Felix Gomes
+#Matrícula: 1510010879
+
+#Criando diretótio
+echo "Criando diretório, digite um nome Ex:exercicio"
+read DIRE
+mkdir ~/$DIRE
+echo "Diretório criado" >> ~/$DIRE/log
+
+#Criando arquivo
+echo "Criando arquivo digite um nome Ex:arquivo"
+read ARQUI
+touch ~/$DIRE/$ARQUI
+echo "Arquivo criado" >> ~/$DIRE/log
+
+#Escrevendo no arquivo
+echo "Escrevendo no arquivo"
+date >> ~/$DIRE/$ARQUI
+echo "Resumo do arquivo:" >> ~/$DIRE/log
+head ~/$DIRE/$ARQUI >> ~/$DIRE/log
+
+#Registro de execução
+nome_log="log_`date +%d-%m-%Y`.txt"
+
+#Empacotar; compactar; mover e criando variável
+tar -zcvf log_$nome_log.tgz ~/$DIRE
+mv log_$nome_log.tgz /home/jefferson 
+echo "Finalizando o script"
+
